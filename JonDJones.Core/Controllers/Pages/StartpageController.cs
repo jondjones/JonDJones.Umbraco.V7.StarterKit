@@ -2,15 +2,15 @@
 using JonDJones.Com.Interfaces;
 using JonDJones.Core.Controllers.Base;
 using JonDJones.Core.Helpers;
-using JonDJones.Core.ViewModels.Pages;
 using Umbraco.Web.Models;
+using JonDJones.Core.ViewModels.Pages;
 
 namespace JonDJones.Core.Controllers.Pages
 {
     [OutputCache(Duration = 10, CacheProfile = "OneMinute")]
-    public class HomepageController : BaseController
+    public class StartpageController : BaseController
     {
-        public HomepageController(IWebsiteDependencies dependencies)
+        public StartpageController(IWebsiteDependencies dependencies)
             : base(dependencies)
         {
         }
@@ -18,9 +18,9 @@ namespace JonDJones.Core.Controllers.Pages
         public override ActionResult Index(RenderModel model)
         {
             Dependencies.CacheProvider.StoreString("KEY", "Logged In");
-            var homepage = ModelProvider.GetHomepageModel(model.Content.Id);
-            var homepageViewModel = new HomepageViewModel(homepage, Dependencies);
-            return CurrentTemplate(homepageViewModel);
+            var startpage = ModelProvider.GetStartpageModel(model.Content.Id);
+            var startpageViewModel = new StartpageViewModel(startpage, Dependencies);
+            return CurrentTemplate(startpageViewModel);
         }
     }
 }

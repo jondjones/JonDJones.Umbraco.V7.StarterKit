@@ -10,7 +10,7 @@ namespace JonDJones.Core.Helpers
             return ContentHelper.GetByNodeId(contentId);
         }
 
-        public static Startpage GetHomepageModel(int contentId)
+        public static Startpage GetStartpageModel(int contentId)
         {
             return ContentHelper.GetByNodeId<Startpage>(contentId);
         }

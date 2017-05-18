@@ -23,17 +23,8 @@ namespace JonDJones.Core.ViewModels.Shared
         
         private IEnumerable<INavigationItem> _menu;
 
-        public HeaderViewModel(DocumentTypeBase homePage,
-                               DocumentTypeBase currentPage,
-                               IWebsiteDependencies dependencies)
+        public HeaderViewModel()
         {
-            Guard.ValidateObject(homePage);
-            Guard.ValidateObject(currentPage);
-            Guard.ValidateObject(dependencies);
-
-            _homePage = homePage;
-            _currentPage = currentPage;
-            _dependencies = dependencies;
         }
 
         public IEnumerable<INavigationItem> Menu

@@ -14,29 +14,19 @@ namespace JonDJones.Core.Dependencies.Cache
 
         public RedisCacheProvider()
         {
-            if (!ConfigSettings.Redis.UseRedis)
-                return;
+            var redisHost = ConfigSettings.Redis.RedisHost;
+            var redisPort = ConfigSettings.Redis.RedisPort;
+            var useSsl = ConfigSettings.Redis.RedisUseSSl;
 
-            try
-            { 
-                var redisHost = ConfigSettings.Redis.RedisHost;
-                var redisPort = ConfigSettings.Redis.RedisPort;
-                var useSsl = ConfigSettings.Redis.RedisUseSSl;
+            var connectionString = $"{redisHost}:{redisPort}";
 
-                var connectionString = $"{redisHost}:{redisPort}";
+            var redisPassword = ConfigSettings.Redis.RedisPassword;
 
-                var redisPassword = ConfigSettings.Redis.RedisPassword;
+            if (!string.IsNullOrEmpty(redisPassword))
+                connectionString = $"{connectionString},password={redisPassword},ssl={useSsl},abortConnect=false";
 
-                if (!string.IsNullOrEmpty(redisPassword))
-                    connectionString = $"{connectionString},password={redisPassword},ssl={useSsl},abortConnect=false";
-
-                var connectionMultiplexer = ConnectionMultiplexer.Connect(connectionString);
-                _database = connectionMultiplexer.GetDatabase();
-            }
-            catch (Exception ex)
-            {
-                _logger.Error($"Unable to connecton to Redis", ex);
-            }
+            var connectionMultiplexer = ConnectionMultiplexer.Connect(connectionString);
+            _database = connectionMultiplexer.GetDatabase();
         }
 
         public void DeleteValue(string key)
