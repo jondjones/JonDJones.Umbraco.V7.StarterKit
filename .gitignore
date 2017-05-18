@@ -7,3 +7,9 @@
 /JonDJones.UmbracoSampleSite/bin
 /JonDJones.UmbracoSampleSite/obj
 /JonDJones.Com.Interfaces/App_Data
+/JonDJones.UmbracoSampleSite/App_Data/TEMP
+/JonDJones.UmbracoSampleSite/App_Data/Logs
+/JonDJones.UmbracoSampleSite/App_Data/Models
+/JonDJones.UmbracoSampleSite/App_Data/NuGetBackup
+/JonDJones.UmbracoSampleSite/App_Data/packages
+/JonDJones.UmbracoSampleSite/App_Data/preview
